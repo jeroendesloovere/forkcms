@@ -466,7 +466,7 @@ class Model
             'module' => 'Faq',
             'type' => 'widget',
             'label' => 'Faq',
-            'action' => 'category_list',
+            'action' => 'CategoryList',
             'data' => null,
             'hidden' => 'N',
             'sequence' => $db->getVar(
@@ -554,7 +554,7 @@ class Model
             'module' => 'Faq',
             'type' => 'widget',
             'label' => 'Faq',
-            'action' => 'category_list',
+            'action' => 'CategoryList',
             'data' => serialize(
                 array(
                     'id' => $item['id'],
