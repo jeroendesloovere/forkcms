@@ -7,6 +7,7 @@ Improvements:
 Bugfixes:
 
 * Core: Mailer uses \Exception.
+* Faq: corrected action url.
 
 
 3.7.0 (2014-04-24)
