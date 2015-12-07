@@ -1,3 +1,10 @@
+3.9.6 (xxxx-xx-xx)
+--
+Improvements:
+
+* Location: refactored FrontendLocationModel to not contain FRONTEND_LANGUAGE anymore.
+
+
 3.9.5 (2015-08-31)
 --
 Improvements:

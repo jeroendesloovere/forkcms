@@ -52,7 +52,7 @@ class Index extends FrontendBaseBlock
      */
     protected function loadData()
     {
-        $this->items = FrontendLocationModel::getAll();
+        $this->items = FrontendLocationModel::getAll(FRONTEND_LANGUAGE);
         $this->settings = FrontendLocationModel::getMapSettings(0);
         $firstMarker = current($this->items);
         if (empty($this->settings)) {

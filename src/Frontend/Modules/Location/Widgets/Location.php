@@ -52,7 +52,7 @@ class Location extends FrontendBaseWidget
      */
     protected function loadData()
     {
-        $this->item = FrontendLocationModel::get($this->data['id']);
+        $this->item = FrontendLocationModel::get($this->data['id'], FRONTEND_LANGUAGE);
         $this->settings = FrontendLocationModel::getMapSettings($this->data['id']);
         if (empty($this->settings)) {
             $settings = $this->get('fork.settings')->getForModule('Location');

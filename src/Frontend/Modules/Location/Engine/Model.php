@@ -69,28 +69,30 @@ class Model
      * Get an item
      *
      * @param int $id The id of the item to fetch.
+     * @param string $language
      * @return array
      */
-    public static function get($id)
+    public static function get($id, $language)
     {
         return (array) FrontendModel::getContainer()->get('database')->getRecord(
             'SELECT *
              FROM location
              WHERE id = ? AND language = ?',
-            array((int) $id, FRONTEND_LANGUAGE)
+            array((int) $id, (string) $language)
         );
     }
 
     /**
      * Get all items
      *
+     * @param string $language
      * @return array
      */
-    public static function getAll()
+    public static function getAll($language)
     {
         return (array) FrontendModel::getContainer()->get('database')->getRecords(
             'SELECT * FROM location WHERE language = ? AND show_overview = ?',
-            array(FRONTEND_LANGUAGE, 'Y')
+            array((string) $language, 'Y')
         );
     }
 
