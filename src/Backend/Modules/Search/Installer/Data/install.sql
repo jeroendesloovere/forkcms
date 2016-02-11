@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `search_index` (
  `active` enum('N','Y') NOT NULL default 'N',
  PRIMARY KEY (`module`,`other_id`,`field`,`language`),
  FULLTEXT KEY `value` (`value`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Search index';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Search index';
 
 
 CREATE TABLE IF NOT EXISTS `search_modules` (
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `search_modules` (
  `searchable` enum('N','Y') NOT NULL,
  `weight` int(11) NOT NULL,
  PRIMARY KEY (`module`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE IF NOT EXISTS `search_statistics` (
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `search_statistics` (
  `data` text,
  `num_results` int(11) default NULL,
  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 
 CREATE TABLE IF NOT EXISTS `search_synonyms` (
@@ -36,4 +36,4 @@ CREATE TABLE IF NOT EXISTS `search_synonyms` (
  `language` varchar(5) NOT NULL,
  PRIMARY KEY (`id`),
  UNIQUE KEY `UNIQUE` (`term`,`language`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
