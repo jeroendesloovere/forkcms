@@ -98,7 +98,7 @@ jsBackend.faq =
 						},
 						success: function(data, textStatus)
 						{
-							// successfully reorderd
+							// successfully reordered
 							if(data.code == 200)
 							{
 								// change count in title (if any)
