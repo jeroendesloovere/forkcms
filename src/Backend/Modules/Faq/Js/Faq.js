@@ -98,7 +98,7 @@ jsBackend.faq =
 						},
 						success: function(data, textStatus)
 						{
-							// not a success so revert the changes
+							// successfully reorderd
 							if(data.code == 200)
 							{
 								// change count in title (if any)
@@ -125,6 +125,7 @@ jsBackend.faq =
 								// show message
 								jsBackend.messages.add('success', data.message);
 							}
+							// not a success so revert the changes
 							else
 							{
 								// revert
