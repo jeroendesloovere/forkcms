@@ -121,6 +121,9 @@ jsBackend.faq =
 
 								// change count in title (if any)
 								$('div#dataGrid-' + toCategoryId + ' h3').html($('div#dataGrid-' + toCategoryId + ' h3').html().replace(/\(([0-9]*)\)$/, '(' + ( $('div#dataGrid-' + toCategoryId + ' table.dataGrid tr').length - 1 ) + ')'));
+
+								// show message
+								jsBackend.messages.add('success', data.message);
 							}
 							else
 							{
