@@ -12,10 +12,9 @@ namespace Frontend\Modules\MailMotor\Actions;
 use Frontend\Core\Engine\Base\Block as FrontendBaseBlock;
 use Frontend\Core\Engine\Language;
 use Frontend\Core\Engine\Form as FrontendForm;
-use Frontend\Core\Engine\Model as FrontendModel;
 use Frontend\Core\Engine\Navigation as FrontendNavigation;
 use Frontend\Modules\MailMotor\Engine\Model as FrontendMailMotorModel;
-use MailMotor\Bundle\MailMotorBundle\Component\Exception\NotImplementedException;
+use MailMotor\Bundle\MailMotorBundle\Exception\NotImplementedException;
 
 /**
  * This is the Unsubscribe-action for MailMotor
@@ -112,23 +111,13 @@ class Unsubscribe extends FrontendBaseBlock
             // get values
             $email = $this->frm->getField('email');
 
-            // define redirect link
-            $redirectLink =
-                FrontendNavigation::getURLForBlock(
-                    'MailMotor',
-                    'Unsubscribe'
-                )
-                . '?sent=true'
-                . '#mailMotorUnsubscribeForm'
-            ;
-
-            try {
-                // validate required fields
-                if ($email->isEmail(Language::err('EmailIsInvalid'))) {
+            // validate required fields
+            if ($email->isEmail(Language::err('EmailIsInvalid'))) {
+                try {
                     // email exists
-                    if (FrontendModel::get('mailmotor.subscriber')->exists($email->getValue())) {
+                    if ($this->get('mailmotor.subscriber')->exists($email->getValue())) {
                         // user is already unsubscribed
-                        if (FrontendModel::get('mailmotor.subscriber')->isUnsubscribed($email->getValue())) {
+                        if ($this->get('mailmotor.subscriber')->isUnsubscribed($email->getValue())) {
                             $email->addError(Language::err('AlreadyUnsubscribed'));
 
                             // do not remove this line, it is required to make the form show error messages properly
@@ -141,50 +130,44 @@ class Unsubscribe extends FrontendBaseBlock
                         // do not remove this line, it is required to make the form show error messages properly
                         $this->frm->addError(Language::err('EmailNotInDatabase'));
                     }
-                // we need to add this because the line below.
-                // $this->frm->getErrors() only checks if form errors are set, not if an element in the form has errors.
-                } else {
-                    $this->frm->addError(Language::err('EmailIsInvalid'));
+                // fallback for when no mail-engine is chosen in the Backend
+                } catch (NotImplementedException $e) {
+                    // do nothing
                 }
+            // we need to add this because the line below
+            // $this->frm->getErrors() only checks if form errors are set, not if an element in the form has errors.
+            } else {
+                $this->frm->addError(Language::err('EmailIsInvalid'));
+            }
 
-                // no errors
-                if (trim($this->frm->getErrors()) == '') {
+            // no errors
+            if (trim($this->frm->getErrors()) == '') {
+                try {
                     // unsubscribe the user
-                    FrontendModel::get('mailmotor.subscriber')->unsubscribe(
+                    $this->get('mailmotor.subscriber')->unsubscribe(
                         $email->getValue()
                     );
-
-                    // redirect
-                    $this->redirect($redirectLink);
-                // show errors
-                } else {
-                    $this->tpl->assign('mailMotorUnsubscribeHasFormError', true);
-                }
-            // no mail-engine is chosen in the Backend,
-            // so we have this fallback to send a mail to the admin
-            } catch (NotImplementedException $e) {
-                $email->isEmail(Language::err('EmailIsInvalid'));
-
-                // no errors?
-                if ($this->frm->isCorrect()) {
-                    // mail admin
+                // fallback for when no mail-engine is chosen in the Backend
+                } catch (NotImplementedException $e) {
+                    // mail admin instead
                     FrontendMailMotorModel::mailAdminToUnsubscribeSubscriber(
                         $email->getValue(),
                         FRONTEND_LANGUAGE
                     );
-
-                    // redirect
-                    $this->redirect($redirectLink);
-                }
-            // other exceptions
-            } catch (\Exception $e) {
-                // when debugging we need to see the exceptions
-                if ($this->getContainer()->getParameter('kernel.debug')) {
-                    throw $e;
                 }
 
-                // show error
-                $this->tpl->assign('mailMotorUnsubscribeHasError', true);
+                // redirect
+                $this->redirect(
+                    FrontendNavigation::getURLForBlock(
+                        'MailMotor',
+                        'Unsubscribe'
+                    )
+                    . '?sent=true'
+                    . '#mailMotorUnsubscribeForm'
+                );
+            // show errors
+            } else {
+                $this->tpl->assign('mailMotorUnsubscribeHasFormError', true);
             }
         }
     }

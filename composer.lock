@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f38ed9dd37ad632de8b2adbe953ce80a",
-    "content-hash": "d019eec432cdb78cbc9f879de6c40edc",
+    "hash": "caa6a125807b593cfa7a14f71863fe73",
+    "content-hash": "6e1292e0df47fd15e7cfd55e2b5ac9c8",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -962,20 +962,20 @@
         },
         {
             "name": "mailmotor/mailchimp-bundle",
-            "version": "1.3.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mailmotor/mailchimp-bundle.git",
-                "reference": "0ba9966649ef91c68a0ad598a697cd90bc5c55bf"
+                "reference": "6661a900e72b41901796ae671d22b6ffe00e7492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mailmotor/mailchimp-bundle/zipball/0ba9966649ef91c68a0ad598a697cd90bc5c55bf",
-                "reference": "0ba9966649ef91c68a0ad598a697cd90bc5c55bf",
+                "url": "https://api.github.com/repos/mailmotor/mailchimp-bundle/zipball/6661a900e72b41901796ae671d22b6ffe00e7492",
+                "reference": "6661a900e72b41901796ae671d22b6ffe00e7492",
                 "shasum": ""
             },
             "require": {
-                "mailmotor/mailmotor-bundle": "^1.2",
+                "mailmotor/mailmotor-bundle": "1.7.*",
                 "pacely/mailchimp-apiv3": "~1.0",
                 "php": ">=5.3.3"
             },
@@ -1004,20 +1004,20 @@
                 "bundle",
                 "php"
             ],
-            "time": "2016-02-28 07:16:37"
+            "time": "2016-05-26 09:49:00"
         },
         {
             "name": "mailmotor/mailmotor-bundle",
-            "version": "1.3.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mailmotor/mailmotor-bundle.git",
-                "reference": "bdd10494cf5a6012e1e50a87859b288435d45fce"
+                "reference": "81a40d7147413253335884e134a32b73eb24c568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mailmotor/mailmotor-bundle/zipball/bdd10494cf5a6012e1e50a87859b288435d45fce",
-                "reference": "bdd10494cf5a6012e1e50a87859b288435d45fce",
+                "url": "https://api.github.com/repos/mailmotor/mailmotor-bundle/zipball/81a40d7147413253335884e134a32b73eb24c568",
+                "reference": "81a40d7147413253335884e134a32b73eb24c568",
                 "shasum": ""
             },
             "require": {
@@ -1052,7 +1052,7 @@
                 "bundle",
                 "php"
             ],
-            "time": "2016-02-28 07:16:23"
+            "time": "2016-05-26 09:51:07"
         },
         {
             "name": "matthiasmullie/minify",

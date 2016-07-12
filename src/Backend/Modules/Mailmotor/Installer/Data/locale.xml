@@ -111,10 +111,10 @@
                 <translation language="nl"><![CDATA[Het inschrijven is niet gelukt]]></translation>
             </item>
             <item type="message" name="SubscribeSuccess">
-                <translation language="de"><![CDATA[Sie haben sich erfolgreich für den Newsletter eingetragen.]]></translation>
-                <translation language="en"><![CDATA[You have successfully subscribed to the newsletter.]]></translation>
-                <translation language="fr"><![CDATA[Vous avez souscrit avec succès à la newsletter.]]></translation>
-                <translation language="nl"><![CDATA[Je bent met succes ingeschreven op de nieuwsbrief.]]></translation>
+                <translation language="de"><![CDATA[<strong>PRÜFEN per Mail Ihre E-Mail-Adresse</strong><br/><br/>Innerhalb von 10 Minuten CONFIRM erhalten Sie eine E-Mail von uns erhalten.<br/>Sie müssen den Bestätigungslink um Ihr Abonnement zu bestätigen.<br/>Ansonsten Ihre E-Mail-Adresse wird nicht auf unserer Mailingliste hinzugefügt werden.<br/>Vergessen Sie nicht, Ihre SPAM-Box zu überprüfen.]]></translation>
+                <translation language="en"><![CDATA[<strong>CHECK YOUR MAILBOX TO CONFIRM YOUR MAIL ADDRESS</strong><br/><br/>Within 10 minutes you will receive a mail from us.<br/>You need to click the confirmation link to confirm your subscription.<br/>Otherwise your mail address will not be added to our mailing list.<br/> Don't forget to check your SPAM-box.]]></translation>
+                <translation language="fr"><![CDATA[<Strong>VÉRIFIER VOTRE BOÎTE POUR CONFIRMER VOTRE ADRESSE MAIL</strong><br/><br/>Dans les 10 minutes, vous recevrez un mail de notre part.<br/>Vous devez cliquer sur le lien de confirmation pour confirmer votre abonnement.<br/>Sinon, votre adresse e-mail ne sera pas ajouté à notre liste de diffusion.<br/>Ne pas oublier de vérifier votre boîte SPAM.]]></translation>
+                <translation language="nl"><![CDATA[<strong>CONTROLEER UW MAILBOX OM UW E-MAILADRES TE BEVESTIGEN</strong><br/><br/>Binnen 10 minuten ontvangt u van ons een e-mail.<br/>Gelieve te klikken op de bevestigingslink om uw inschrijving te bevestigen.<br/>Anders wordt uw e-mailadres niet op onze mailinglijst toegevoegd.<br/>Vergeet niet om in uw SPAM-box te kijken.]]></translation>
             </item>
             <item type="action" name="Unsubscribe">
                 <translation language="de"><![CDATA[abmelden]]></translation>
