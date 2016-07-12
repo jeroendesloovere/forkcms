@@ -962,6 +962,7 @@
         },
         {
             "name": "mailmotor/mailchimp-bundle",
+<<<<<<< HEAD
             "version": "1.5.0",
             "source": {
                 "type": "git",
@@ -976,6 +977,22 @@
             },
             "require": {
                 "mailmotor/mailmotor-bundle": "1.7.*",
+=======
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mailmotor/mailchimp-bundle.git",
+                "reference": "6a3bca3afc23fb50ea14024bda305cc8a420cba9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mailmotor/mailchimp-bundle/zipball/6a3bca3afc23fb50ea14024bda305cc8a420cba9",
+                "reference": "6a3bca3afc23fb50ea14024bda305cc8a420cba9",
+                "shasum": ""
+            },
+            "require": {
+                "mailmotor/mailmotor-bundle": "~1.4",
+>>>>>>> origin/new-mailmotor-integrated
                 "pacely/mailchimp-apiv3": "~1.0",
                 "php": ">=5.3.3"
             },

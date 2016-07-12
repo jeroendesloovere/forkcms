@@ -113,13 +113,22 @@ class Subscribe extends FrontendBaseBlock
             // validate required fields
             if ($email->isEmail(Language::err('EmailIsInvalid'))) {
                 try {
+<<<<<<< HEAD:src/Frontend/Modules/Mailmotor/Actions/Subscribe.php
                     if ($this->get('mailmotor.subscriber')->isSubscribed($email->getValue())) {
+=======
+                    if (FrontendModel::get('mailmotor.subscriber')->isSubscribed($email->getValue())) {
+>>>>>>> origin/new-mailmotor-integrated:src/Frontend/Modules/MailMotor/Actions/Subscribe.php
                         $email->addError(Language::err('AlreadySubscribed'));
 
                         // do not remove this line, it is required to make the form show error messages properly
                         $this->frm->addError(Language::err('AlreadySubscribed'));
                     }
+<<<<<<< HEAD:src/Frontend/Modules/Mailmotor/Actions/Subscribe.php
                 // fallback for when no mail-engine is chosen in the Backend
+=======
+                // no mail-engine is chosen in the Backend,
+                // so we have this fallback to send a mail to the admin
+>>>>>>> origin/new-mailmotor-integrated:src/Frontend/Modules/MailMotor/Actions/Subscribe.php
                 } catch (NotImplementedException $e) {
                     // do nothing
                 }
@@ -138,9 +147,16 @@ class Subscribe extends FrontendBaseBlock
                         $mergeFields,
                         FRONTEND_LANGUAGE
                     );
+<<<<<<< HEAD:src/Frontend/Modules/Mailmotor/Actions/Subscribe.php
                 // fallback for when no mail-engine is chosen in the Backend
                 } catch (NotImplementedException $e) {
                     // mail admin instead
+=======
+                // no mail-engine is chosen in the Backend,
+                // so we have this fallback to send a mail to the admin
+                } catch (NotImplementedException $e) {
+                    // mail admin
+>>>>>>> origin/new-mailmotor-integrated:src/Frontend/Modules/MailMotor/Actions/Subscribe.php
                     FrontendMailMotorModel::mailAdminToSubscribeSubscriber(
                         $email->getValue(),
                         FRONTEND_LANGUAGE

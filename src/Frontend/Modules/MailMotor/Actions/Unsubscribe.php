@@ -130,7 +130,10 @@ class Unsubscribe extends FrontendBaseBlock
                         // do not remove this line, it is required to make the form show error messages properly
                         $this->frm->addError(Language::err('EmailNotInDatabase'));
                     }
+<<<<<<< HEAD:src/Frontend/Modules/Mailmotor/Actions/Unsubscribe.php
                 // fallback for when no mail-engine is chosen in the Backend
+=======
+>>>>>>> origin/new-mailmotor-integrated:src/Frontend/Modules/MailMotor/Actions/Unsubscribe.php
                 } catch (NotImplementedException $e) {
                     // do nothing
                 }
@@ -147,9 +150,16 @@ class Unsubscribe extends FrontendBaseBlock
                     $this->get('mailmotor.subscriber')->unsubscribe(
                         $email->getValue()
                     );
+<<<<<<< HEAD:src/Frontend/Modules/Mailmotor/Actions/Unsubscribe.php
                 // fallback for when no mail-engine is chosen in the Backend
                 } catch (NotImplementedException $e) {
                     // mail admin instead
+=======
+                // no mail-engine is chosen in the Backend,
+                // so we have this fallback to send a mail to the admin
+                } catch (NotImplementedException $e) {
+                    // mail admin
+>>>>>>> origin/new-mailmotor-integrated:src/Frontend/Modules/MailMotor/Actions/Unsubscribe.php
                     FrontendMailMotorModel::mailAdminToUnsubscribeSubscriber(
                         $email->getValue(),
                         FRONTEND_LANGUAGE
