@@ -93,6 +93,7 @@ class SubscribeType extends AbstractType
 
     /**
      * @return array
+     * @throws \Exception
      */
     public function getInterests()
     {
@@ -102,17 +103,23 @@ class SubscribeType extends AbstractType
             $mailMotorInterests = $this->subscriber->getInterests();
 
             // Has interests
-            if (!empty($mailMotorInterests)) {
+            if (is_array($mailMotorInterests) && !empty($mailMotorInterests)) {
                 // Loop interests
                 foreach ($mailMotorInterests as $categoryId => $categoryInterest) {
-                    foreach ($categoryInterest['children'] as $categoryChildId => $categoryChildTitle) {
-                        // Add interest value for checkbox
-                        $interests[$categoryChildId] = $categoryChildTitle;
+                    // Has interests
+                    if (is_array($categoryInterest) && !empty($categoryInterest)) {
+                        foreach ($categoryInterest['children'] as $categoryChildId => $categoryChildTitle) {
+                            // Add interest value for checkbox
+                            $interests[$categoryChildId] = $categoryChildTitle;
+                        }
                     }
                 }
             }
-        // Fallback for when no mail-engine is chosen in the Backend
+            // Fallback for when no mail-engine is chosen in the Backend
         } catch (NotImplementedException $e) {
+            // Do nothing
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
         }
 
         return $interests;
