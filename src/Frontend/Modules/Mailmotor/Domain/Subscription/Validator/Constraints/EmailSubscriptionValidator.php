@@ -18,13 +18,13 @@ class EmailSubscriptionValidator extends ConstraintValidator
     protected $subscriber;
 
     /**
-     * Set subscriber - using a constructor didn't work.
+     * Set subscriber
+     * Note: it's not possible by using the constructor
      *
      * @param Subscriber $subscriber
      */
-    public function setSubscriber(
-        Subscriber $subscriber
-    ): void {
+    public function setSubscriber(Subscriber $subscriber): void
+    {
         $this->subscriber = $subscriber;
     }
 
@@ -34,14 +34,18 @@ class EmailSubscriptionValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
+        // There are already violations thrown, so we return immediately
+        if (count($this->context->getViolations()) > 0) {
+            return;
+        }
+
         try {
             // The email is already in our mailing list
             if ($this->subscriber->isSubscribed($value)) {
                 $this->context->buildViolation($constraint->alreadySubscribedMessage)->addViolation();
             }
-            // fallback for when no mail-engine is chosen in the Backend
         } catch (NotImplementedException $e) {
-            // do nothing
+            // do nothing in fallback for when "no mail-engine" is chosen in the Backend
         }
     }
 }

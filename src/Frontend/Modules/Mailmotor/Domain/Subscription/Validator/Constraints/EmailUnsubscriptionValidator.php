@@ -18,13 +18,13 @@ class EmailUnsubscriptionValidator extends ConstraintValidator
     protected $subscriber;
 
     /**
-     * Set subscriber - using a constructor didn't work.
+     * Set subscriber
+     * Note: it's not possible by using the constructor
      *
      * @param Subscriber $subscriber
      */
-    public function setSubscriber(
-        Subscriber $subscriber
-    ): void {
+    public function setSubscriber(Subscriber $subscriber): void
+    {
         $this->subscriber = $subscriber;
     }
 
@@ -34,6 +34,11 @@ class EmailUnsubscriptionValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
+        // There are already violations thrown, so we return immediately
+        if (count($this->context->getViolations()) > 0) {
+            return;
+        }
+
         try {
             // The email doesn't exists in the mailing list
             if (!$this->subscriber->exists($value)) {

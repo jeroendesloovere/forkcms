@@ -138,19 +138,13 @@ class SubscribeType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Subscription::class,
             'validation_groups' => function (FormInterface $form) {
-                $groups = ['Default'];
-
-                if (\SpoonFilter::isEmail($form->getData()->email)) {
-                    $groups[] = 'is_email';
-                }
-
                 // Define overwrite interests
                 $overwriteInterests = $this->modulesSettings->get('Mailmotor', 'overwrite_interests', true);
                 if (!empty($this->interests) && $overwriteInterests) {
-                    $groups[] = 'has_interests';
+                    return ['Default', 'has_interests'];
                 }
 
-                return $groups;
+                return ['Default'];
             },
         ]);
     }

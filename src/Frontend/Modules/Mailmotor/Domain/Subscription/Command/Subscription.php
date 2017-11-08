@@ -12,8 +12,8 @@ final class Subscription
      * @var string
      *
      * @Assert\NotBlank(message="err.FieldIsRequired")
-     * @Assert\Email
-     * @MailingListAssert\EmailSubscription(groups={"is_email"})
+     * @Assert\Email(message="err.EmailIsInvalid")
+     * @MailingListAssert\EmailSubscription
      */
     public $email;
 
