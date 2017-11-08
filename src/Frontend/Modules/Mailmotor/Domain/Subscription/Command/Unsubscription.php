@@ -12,8 +12,8 @@ final class Unsubscription
      * @var string
      *
      * @Assert\NotBlank(message="err.FieldIsRequired")
-     * @Assert\Email
-     * @MailingListAssert\EmailUnsubscription(groups={"is_email"})
+     * @Assert\Email(message="err.EmailIsInvalid")
+     * @MailingListAssert\EmailUnsubscription
      */
     public $email;
 

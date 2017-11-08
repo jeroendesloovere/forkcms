@@ -38,15 +38,6 @@ class UnsubscribeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Unsubscription::class,
-            'validation_groups' => function (FormInterface $form) {
-                $groups = ['Default'];
-
-                if (\SpoonFilter::isEmail($form->getData()->email)) {
-                    $groups[] = 'is_email';
-                }
-
-                return $groups;
-            },
         ]);
     }
 
